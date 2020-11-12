@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.rbddevs.splashy:splashy:1.2.0@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3374da64f61c1f8e371c0277a724f69f/jetified-splashy-1.2.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3374da64f61c1f8e371c0277a724f69f/jetified-splashy-1.2.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3374da64f61c1f8e371c0277a724f69f/jetified-splashy-1.2.0/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.rbddevs.splashy/splashy/1.2.0/275b119b84782ab9a6bb84a89300e2f577193e3b/splashy-1.2.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.rbddevs.splashy/splashy/1.2.0/523b9a2618ae0ad8dc7f9a8ee251377b28242a30/splashy-1.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

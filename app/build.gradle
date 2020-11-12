@@ -1,0 +1,178 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: "kotlin-allopen"
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.1"
+
+    defaultConfig {
+        applicationId "id.firman.movieandroid"
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        buildConfigField "String", "TMDB_API_KEY", "\"f72f27dc4e8e194521c111cb5b4a6f96\""
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    lintOptions {
+        lintConfig rootProject.file('lint.xml')
+    }
+    kapt {
+        correctErrorTypes = true
+    }
+    buildFeatures{
+        dataBinding = true
+    }
+    androidExtensions {
+        experimental = true
+    }
+    dexOptions {
+        preDexLibraries true
+    }
+    sourceSets {
+
+        String sharedTestDir = "src/test-common/java"
+        test {
+            java.srcDirs += sharedTestDir
+        }
+        androidTest {
+            java.srcDirs += sharedTestDir
+        }
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            testCoverageEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguardTest-rules.pro'
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguardTest-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    def androidxVersion = '1.0.0'
+    def appCompatVersion = '1.1.0'
+    def androidFragment = '1.2.5'
+    def recyclerVersion = '1.1.0'
+    def ankoVersion = '0.10.8'
+    def archComponentVersion = '2.1.0'
+    def roomVersion = '2.2.5'
+    def lifecycleVersion = '2.2.0'
+    def daggerVersion = '2.28.1'
+    def retrofitVersion = '2.9.0'
+    def googleJsonVersion = '2.8.6'
+    def okhttpVersion = '4.7.2'
+    def timberVersion = '4.7.1'
+    def stethoVersion = '1.5.1'
+    def glideVersion = '4.11.0'
+    def glidePaletteVersion = '2.1.2'
+    def androidTagViewVersion = '1.1.4'
+    def expandableTextViewVersion = '0.1.4'
+    def mockitoKotlinVersion = '2.2.0'
+    def junitVersion = '4.13'
+    def espressoVersion = '3.2.0'
+    def androidxTestRules = '1.2.0'
+    def nav_version = '2.3.0'
+
+    // support library
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation 'androidx.activity:activity:1.1.0'
+    implementation 'androidx.activity:activity-ktx:1.1.0'
+    implementation "androidx.fragment:fragment:$androidFragment"
+    implementation "androidx.fragment:fragment-ktx:$androidFragment"
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation "androidx.palette:palette:$androidxVersion"
+    implementation "androidx.recyclerview:recyclerview:$recyclerVersion"
+    implementation "androidx.constraintlayout:constraintlayout:1.1.3"
+
+    // kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "org.jetbrains.anko:anko:$ankoVersion"
+
+    // architecture components
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+    implementation "androidx.room:room-runtime:$roomVersion"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    kapt "androidx.room:room-compiler:$roomVersion"
+
+    //Splash Screen Library
+    implementation 'com.rbddevs.splashy:splashy:1.2.0'
+
+    // navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // dependency injection
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    implementation "com.google.dagger:dagger-android:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+
+    debugImplementation "androidx.fragment:fragment-testing:$androidFragment"
+
+    // network
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+    implementation "com.google.code.gson:gson:$googleJsonVersion"
+
+
+    // glide
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    implementation "com.github.florent37:glidepalette:$glidePaletteVersion"
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
+
+
+    // debugging
+    implementation "com.jakewharton.timber:timber:$timberVersion"
+    implementation "com.facebook.stetho:stetho:$stethoVersion"
+    implementation "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
+
+    // custom view
+    implementation "co.lujun:androidtagview:$androidTagViewVersion"
+    implementation "com.ms-square:expandableTextView:$expandableTextViewVersion"
+
+    // unit test
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion"
+    testImplementation "androidx.arch.core:core-testing:$archComponentVersion"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$okhttpVersion"
+
+    // Android test
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
+    androidTestImplementation "androidx.test.ext:junit:1.1.1"
+    androidTestImplementation "androidx.test:core:1.2.0"
+    androidTestImplementation "androidx.test:rules:$androidxTestRules"
+    androidTestImplementation "androidx.test:runner:$androidxTestRules"
+    androidTestImplementation "org.mockito:mockito-android:3.3.3"
+    androidTestImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion"
+    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+
+
+}
